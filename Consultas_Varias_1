@@ -1,0 +1,63 @@
+--
+1_clientes que son "Owner".
+2_clientes que pertenecen a la compañía "A".
+listado con los datos: City, first_name, last_name, job_title de todos los
+3_clientes que sean de la ciudad "Boston".
+4_listado de todas las órdenes con forma de pago de tarjeta de crédito o
+efectivo.
+5_métodos de pago
+6_iudad de envío sea las vegas y el tipo de pago sea Tarjeta
+de Crédito?
+empleados con puesto “Sales Representative”.
+--
+
+
+-- 1--
+select * from customers
+where job_title = 'Owner';
+
+--  2--
+SELECT * FROM customers
+where company = 'Company A';
+
+Select * from customers;
+
+-- 3--
+
+SELECT city, first_name, last_name, job_title from customers
+where city = 'Boston';
+
+-- 4--
+SELECT * FROM inventory_transactions
+
+?????
+
+--  5--
+SELECT * FROM ORDERS;
+SELECT * FROM ORDERS
+WHERE PAYMENT_TYPE = ('CREDIT CARD' AND 'Check');
+
+
+-- 5 --
+SELECT DISTINCT PAYMENT_TYPE FROM ORDERS
+
+-- 6--
+SELECT * FROM ORDERS;
+
+SELECT * FROM ORDERS 
+WHERE SHIP_CITY = 'Las Vegas'
+and payment_type = 'credit card';
+
+-- 7 --
+select * from employees
+where job_title = 'Sales Representative';
+
+-- 8 --
+select id from employees
+where last_name = 'Sergienko';
+
+-- 9 -- 
+select * from orders;
+Select * from orders
+where employee_id = 4;
+

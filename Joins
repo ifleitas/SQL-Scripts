@@ -1,0 +1,58 @@
+--1. Obtener el nombre y apellido de los primeros 5 actores disponibles, utilizar aliases para mostrar los
+nombres de las columnas en español.
+2. Obtener un listado que incluya nombre, apellido y correo electrónico de los clientes (customers)
+INACTIVOS, utilizar aliases para mostrar los nombres de las columnas en español.
+3. Obtener un listado de films incluyendo título, año y descripción de los films que tienen un
+rental_duration mayor a cinco. Ordenar por rental_duration de mayor a menor y utilizar aliases para
+mostrar los nombres de las columnas en español
+4. Obtener un listado de alquileres (rentals) que se hicieron durante el mes de Mayo de 2005, incluir en el
+resultado todas las columnas disponibles.--
+
+select * from orders;
+select * from order_details;
+select * from products;
+-- id,order_date,  product_id (order_deatils), quantity, unit_price
+-- 1--
+Select o.id as OrdenID, o.order_date as Fecha_Orden, od.product_id as ProductoID, od.quantity as Cantidad, od.unit_price as Precio_Unitario
+from orders o 
+left join order_details od
+on o.id=od.order_id;
+
+-- 2 --
+Select o.id as OrdenID, o.order_date as Fecha_Orden, od.product_id as ProductoID, od.quantity as Cantidad, od.unit_price as Precio_Unitario
+from orders o 
+left join order_details od
+on o.id=od.order_id
+ORDER BY 1;
+
+-- 3 --
+Select (od.unit_price*od.quantity) as Importe, o.id as OrdenID, o.order_date as Fecha_Orden, od.product_id as ProductoID, od.quantity as Cantidad, od.unit_price as Precio_Unitario
+from orders o 
+left join order_details od
+on o.id=od.order_id
+ORDER BY 2;
+
+-- 4 --
+Select o.id as OrdenID, o.order_date as Fecha_Orden, od.product_id as ProductoID, od.quantity as Cantidad, od.unit_price as Precio_Unitario
+from orders o 
+join order_details od
+on o.id=od.order_id
+and o.id=44;
+
+-- PARTE II --
+SELECT * FROM employees;
+SELECT * FROM orders;
+
+SELECT o.id as OrdenID, e.last_name as Empleado 
+FROM orders o
+join employees e  
+on o.employee_id = e.id
+where e.last_name = 'Sergienko';
+
+SELECT * FROM orders_status;
+
+select *
+from orders o
+join orders_status os
+on o.status_id=os.status_name
+where status_name <>'closed'

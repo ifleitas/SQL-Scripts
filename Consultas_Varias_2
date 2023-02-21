@@ -1,0 +1,42 @@
+-- 1 --
+SELECT * FROM CUSTOMERS;
+SELECT COUNT(distinct ID) AS 'TOTAL CLIENTES'from customers;
+-- 2 --
+SELECT COUNT(distinct ID), CITY from customers
+GROUP BY CITY;
+-- 3 --
+SELECT* FROM ORDERS;
+SELECT COUNT(distinct ID) AS 'CANTIDAD_ORDENES', PAYMENT_TYPE FROM orders
+GROUP BY PAYMENT_TYPE
+ORDER BY 1 DESC; 
+-- 4 --
+SELECT count(ID), PAYMENT_TYPE, status_id FROM orders
+WHERE status_id = 3
+gROUP BY PAYMENT_TYPE; 
+
+-- 5 --
+SELECT * FROM ORDER_DETAILS;
+SELECT avg(quantity) from order_details;
+
+-- 6 -- 
+select * from order_details;
+select * from sales_reports;
+SELECT max(quantity), id from order_details;
+
+-- 7 --
+SELECT max(quantity), product_id from order_details;
+-- producto id 34 -- 
+-- 8 -- 
+select * from products;
+SELECT PRODUCT_NAME, ID FROM products
+WHERE ID = 34;
+
+-- 9 --
+select * from order_details;
+SELECT SUM(QUANTITY * UNIT_PRICE) AS 'FACTURACION TOTAL' FROM order_details;
+
+-- 10 --
+select * from orders;
+SELECT employee_id, COUNT(*) AS 'CANTIDAD DE ORDENES' FROM ORDERS
+GROUP BY EMPLOYEE_ID 
+ORDER BY 2 DESC
